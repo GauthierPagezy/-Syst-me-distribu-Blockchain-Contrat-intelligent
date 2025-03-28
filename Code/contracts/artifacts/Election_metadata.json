@@ -1,0 +1,239 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "_candidateId",
+						"type": "uint256"
+					}
+				],
+				"name": "votedEvent",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					}
+				],
+				"name": "addCandidate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_addr",
+						"type": "address"
+					}
+				],
+				"name": "addToWhitelist",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "candidates",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "voteCount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "candidatesCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_candidateId",
+						"type": "uint256"
+					}
+				],
+				"name": "vote",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "voters",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "whitelist",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Code/contracts/Election.sol": "Election"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Code/contracts/Election.sol": {
+			"keccak256": "0xf756b24d58dd5fd8878fa07b5dfbde8ccebfe3ffd422ff50f293c212f3d47b66",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://58e718a7b4d0b27b9cc0f1d68587a4569979a2583a6a2e9bee9689e5fd8fe719",
+				"dweb:/ipfs/QmP2JkCah4ouLW4hCynMnPWLQcznuAvL1RJxWBNF6WLi7p"
+			]
+		},
+		"Code/contracts/Ownable.sol": {
+			"keccak256": "0x114319bf2b0bc917a444de071d5f1d07077c835ab4cadfcc96ee2467c8757836",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://3fa8ab944067608c32fc396b84bf383523307fc1859984d4a38fd9f53427ce65",
+				"dweb:/ipfs/QmTvvpLkhemZLT6rCDBHZv8KSCzkTaRJyLCXCyAD5ibg8S"
+			]
+		},
+		"Code/contracts/SafeMath.sol": {
+			"keccak256": "0xb5dc01de878132a7db353dbef8c7a9db4f384075b364ba19494aabd4b7d09df0",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://17fdc2afc7279c62a0bb1d951ea9d7bce51a0add56271b82c4e381050eb127df",
+				"dweb:/ipfs/QmQoYovQAfBBEYcHLB7i8Q9giVazt92yzFcbGU6Wj21wfT"
+			]
+		}
+	},
+	"version": 1
+}

@@ -5,46 +5,42 @@ import "./Ownable.sol";
 import "./SafeMath.sol";
 
 contract Election is Ownable {
+    using SafeMath for uint256;
 
-using SafeMath for uint256;
-
-    // Model a Candidate
     struct Candidate {
         uint256 id;
         string name;
         uint voteCount;
     }
 
-    // Store accounts that have voted
     mapping(address => bool) public voters;
-    // Store Candidates
-    // Fetch Candidate
+
     mapping(uint => Candidate) public candidates;
-    // Store Candidates Count
+
     uint public candidatesCount;
 
-    // voted event
-    event votedEvent ( uint indexed _candidateId);
+    mapping(address => bool) public whitelist;
 
-    function addCandidate (string memory _name) public onlyOwner {
-        candidatesCount ++;
+    event votedEvent(uint indexed _candidateId);
+
+    function addToWhitelist(address _addr) public onlyOwner {
+        whitelist[_addr] = true;
+    }
+
+    function addCandidate(string memory _name) public {
+        require(whitelist[msg.sender], "Adresse non autorisee a ajouter un candidat");
+        candidatesCount++;
         candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
     }
 
-    function vote (uint _candidateId) public {
-        // require that they haven't voted before
-        require(!voters[msg.sender]);
+    function vote(uint _candidateId) public {
+        require(!voters[msg.sender], "Vous avez deja vote");
 
-        // require a valid candidate
-        require(_candidateId > 0 && _candidateId <= candidatesCount);
+        require(_candidateId > 0 && _candidateId <= candidatesCount, "Candidat invalide");
 
-        // record that voter has voted
         voters[msg.sender] = true;
+        candidates[_candidateId].voteCount++;
 
-        // update candidate vote Count
-        candidates[_candidateId].voteCount ++;
-
-        // trigger voted event
-        emit votedEvent (_candidateId);
+        emit votedEvent(_candidateId);
     }
 }
